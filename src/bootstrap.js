@@ -5,8 +5,10 @@ import App from "./App";
 
 // Mount fn to start app
 
-const mount = (el, { onNavigate, defaultHistory }) => {
-    const history = defaultHistory || createMemoryHistory();
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+    const history = defaultHistory || createMemoryHistory({
+        initialEntries: [initialPath]
+    });
 
     if (onNavigate) {
         history.listen(onNavigate);
