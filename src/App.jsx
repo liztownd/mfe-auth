@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import {
   StylesProvider,
   createGenerateClassName,
@@ -16,16 +16,19 @@ const App = ({ history, onSignIn }) => {
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
-        <Router history={history}>
+      <BrowserRouter >
+
           <Switch>
-            <Route path={"/auth/signin"}>
-              <SignIn onSignIn={onSignIn} />
+          <Route path={"/auth/signup"} >
+          <SignUp onSignIn={onSignIn} />
+          </Route>
+
+            <Route path="/auth/signin" >
+            <SignIn onSignIn={onSignIn} />
             </Route>
-            <Route path={"/auth/signup"}>
-              <SignUp onSignIn={onSignIn} />
-            </Route>
+              
           </Switch>
-        </Router>
+          </BrowserRouter>
       </StylesProvider>
     </div>
   );
